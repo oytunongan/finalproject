@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Error!
+{% endblock %}
+
+{% block header %}
+    Web Application
+{% endblock %}
+
+{% block main %}
+    <body>
+        <p><b>Error Message: {{message}}</b></p>
+        <p><b> Error Code: {{code}}</b></p>
+        <p><a href="/">Back To Search</a></p>
+    </body>
+{% endblock %}

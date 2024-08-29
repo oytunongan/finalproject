@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Guide to Stocks
+{% endblock %}
+
+{% block header %}
+    Search for Stock Tickers
+{% endblock %}
+
+{% block main %}
+    <form action="/guide" method="post">
+        <div class="input-group">
+            <select class="custom-select" id="title" name="title">
+                <option selected>Choose Stock...</option>
+                {% for data in stock_list %}
+                    <option >{{ data.title }}</option>
+                {% endfor %}
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Learn Ticker</button>
+            </div>
+        </div>
+    </form>
+    <div class="p-5 h2 text-center text-dark">
+        <p><b>Stock's symbol is: <mark><a href="/">{{ stock_ticker }}</a></mark></b></p>
+    </div>
+{% endblock %}

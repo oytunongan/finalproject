@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Symbol
+{% endblock %}
+
+{% block header %}
+    Web Application
+{% endblock %}
+
+{% block main %}
+    <form action="/" method="post">
+        <div class="form-group mb-2">
+            {% if session.symbol %}
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" value="{{ session.symbol }}" placeholder="Stock's Symbol" type="text">
+            {% else %}
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Stock's Symbol" type="text">
+            {% endif %}
+        </div>
+        <button class="btn btn-secondary btn-lg" type="submit">Analyze</button>
+    </form>
+    <div class="p-5 h5 text-center text-danger">
+        <p><b>Note:If you are not sure about symbol of stock, please check it out <a href="/guide">Guide</a> page!</b></p>
+    </div>
+{% endblock %}

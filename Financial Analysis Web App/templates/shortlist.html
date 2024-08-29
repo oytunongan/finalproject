@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Shortlist
+{% endblock %}
+
+{% block header %}
+    Shortlisted Previous Searches
+{% endblock %}
+
+{% block main %}
+    <form action="/shortlist" method="post">
+        <select class="form-select form-select-sm" id="stock_symbol" name="stock_symbol" onchange="this.form.submit()">
+            <option selected disabled>Filter Stock</option>
+            {% for data in stock_group %}
+                <option value="{{ data.stock_symbol }}">{{ data.stock_symbol }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    <br>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Stock Name</th>
+                    <th>Stock Symbol</th>
+                    <th>Estimated Price</th>
+                    <th>Potential</th>
+                    <th>Search Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in data_list %}
+                    <tr>
+                        <td>{{ data.stock_name }}</td>
+                        <td>{{ data.stock_symbol }}</td>
+                        <td>${{ data.stock_estimated_price }}</td>
+                        <td>{{ data.stock_potential }}</td>
+                        <td>{{ data.search_date}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><a href="/">Back To Search</a></p>
+    </div>
+{% endblock %}
